@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Todo:</strong>
+  <%= @task.todo %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @task.category %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @task.due_date %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @task.priority %>
+</p>
+
+
+<% if @task.avatars? %>
+  <ul>
+    <% @task.avatars.each do |attachment| %>
+       
+        <%= link_to(image_tag(attachment.url, alt: 'Image')) %>
+        <%= hidden_field :task, :attachments, multiple: true, value: attachment.identifier %>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_task_path(@task) %> 
+<%= link_to 'Back', tasks_path %>

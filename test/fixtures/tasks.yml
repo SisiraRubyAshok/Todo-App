@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  todo: MyString
+  category: MyString
+  due_date: 2021-03-01
+  priority: 1
+  user_id: 1
+
+two:
+  todo: MyString
+  category: MyString
+  due_date: 2021-03-01
+  priority: 1
+  user_id: 1

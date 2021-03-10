@@ -1,0 +1,13 @@
+<h1> Welcome to ToDoApp</h1>
+<%if !user_signed_in? %>
+<br>
+<%= link_to "Login to continue..", user_session_path, class:"nav-link "%>
+<br>
+<h3>New User? </h3>
+<br>
+<%= link_to "Create new Account", new_user_registration_path,class:"nav-link" %>
+<br>
+<%end%>
+
+<%=image_tag("tick.jpeg") %>
+

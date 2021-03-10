@@ -1,0 +1,71 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field form-group ">
+    <%= form.label :todo %>
+    <%= form.text_field :todo %>
+  </div>
+
+  <div class="field form-group " >
+    <%= form.label :category %>
+  
+    <%= form.select :category, ["work", "study", "shopping","personal","no category"] %>
+
+  </div>
+ 
+
+  <div class="field form-group">
+    <%= form.label :due_date %>
+    <%= form.date_select :due_date %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :priority %>
+    <%= form.number_field :priority %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :Add_images %>
+    <%= form.file_field :avatars, multiple: true  %>
+  </div>
+
+
+  
+  <% if @task.avatars? %>
+  <ul>
+    <% @task.avatars.each do |avatar| %>
+    <%= image_tag(avatar.url)%>
+    
+  </ul>
+    
+
+  <% end %>
+    <%= link_to 'Remove', tasks_remove_image_path, method: :delete %>
+
+  <%end%>
+  
+
+  <div class="field form-group visually-hidden ">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :task_user_id, class:"form-control" , value:current_user.id%>
+  </div>
+ 
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+ 
+<% end %>
