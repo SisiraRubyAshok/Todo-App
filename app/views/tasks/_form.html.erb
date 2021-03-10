@@ -48,10 +48,14 @@
     <%= image_tag(avatar.url)%>
     
   </ul>
-    
-
+    <br>
   <% end %>
-    <%= link_to 'Remove', tasks_remove_image_path, method: :delete %>
+     <ul>
+      <p class="font-weight-bold">
+        <%= check_box_tag (:remove_attachment)%> Remove Images
+      </p>
+  </ul>
+
 
   <%end%>
   

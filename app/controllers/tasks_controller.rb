@@ -38,16 +38,18 @@ class TasksController < ApplicationController
     end
   end
   
-  def remove_image
+  
 
-          @task.remove_avatars!
-          @task.save
       
-  end
+
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
      
+      if params[:remove_attachment]=='1'
+          @task.remove_avatars!
+          @task.save
+      end
 
     respond_to do |format|
       if @task.update(task_params)
