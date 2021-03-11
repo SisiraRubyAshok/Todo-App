@@ -9,6 +9,7 @@
       <th>Category</th>
       <th>Due date</th>
       <th>Priority</th>
+      <th>Status</th>
       <!-- <th>User</th> -->
       <th colspan="3"></th>
     </tr>
@@ -21,6 +22,11 @@
         <td><%= task.category %></td>
         <td><%= task.due_date %></td>
         <td><%= task.priority %></td>
+         <%if task.completed? %>
+        <td>Completed</td>
+        <%else%>
+        <td>Not Completed</td>
+        <%end%>
         <!-- <td><%= task.user_id %></td> -->
         <td><%= link_to 'Show', task %></td>
         <!-- <% if task.user == current_user%> -->
@@ -38,4 +44,5 @@
 <br>
 
 
-<%= link_to 'New Task', new_task_path %>
+<!-- <%= link_to 'New Task', new_task_path %> -->
+<%= render 'alltask', task: @task %>

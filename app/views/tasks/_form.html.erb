@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field form-group ">
+      <%= form.label :Task_completed? %>
+      <%= form.select :completed ,[false,true] %>
+  </div>
 
   
   <div class="field form-group ">

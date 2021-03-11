@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+<h1>Tasks to Do</h1>
+
+<table  class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Todo</th>
+      <th>Category</th>
+      <th>Due date</th>
+      <th>Priority</th>
+      <!-- <th colspan="3"></th> -->
+    </tr>
+  </thead>
+
+  <!-- <tbody> -->
+    <% @tasks.each do |task| %>
+      <tr>
+        <%if !task.completed? %>
+        <td><%= task.todo %></td>
+        <td><%= task.category %></td>
+        <td><%= task.due_date %></td>
+        <td><%= task.priority %></td>
+      <%end%>
+      
+      </tr>
+    <% end %>
+  <!-- </tbody> -->
+</table>
+<br>
+
+<h1>Completed Tasks</h1>
+
+<table  class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Todo</th>
+      <th>Category</th>
+      <th>Completed on</th>
+      <th>Priority</th>
+      <!-- <th colspan="3"></th> -->
+    </tr>
+  </thead>
+
+  <!-- <tbody> -->
+    <% @tasks.each do |task| %>
+      <tr>
+        <%if task.completed? %>
+        <td><%= task.todo %></td>
+        <td><%= task.category %></td>
+        <td><%= task.updated_at %></td>
+        <td><%= task.priority %></td>
+      <%end%>
+      
+      </tr>
+    <% end %>
+  <!-- </tbody> -->
+</table>
+
+<br>
