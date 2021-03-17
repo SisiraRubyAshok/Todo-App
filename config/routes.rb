@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'home/about'
   root 'home#index'
   resources :tasks 
-
+  get '/search' => 'tasks#search', :as => 'search_task'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

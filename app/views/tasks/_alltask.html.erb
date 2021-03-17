@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+
+
 <h1>Tasks to Do</h1>
 
 <table  class="table table-dark table-striped">
@@ -18,7 +20,7 @@
         <%if !task.completed? %>
         <td><%= task.todo %></td>
         <td><%= task.category %></td>
-        <td><%= task.due_date %></td>
+        <td><%= task.due_date.strftime("%B %e, %Y") %></td>
         <td><%= task.priority %></td>
       <%end%>
       
@@ -47,7 +49,7 @@
         <%if task.completed? %>
         <td><%= task.todo %></td>
         <td><%= task.category %></td>
-        <td><%= task.updated_at %></td>
+        <td><%= task.updated_at.strftime("%B %e, %Y") %></td>
         <td><%= task.priority %></td>
       <%end%>
       

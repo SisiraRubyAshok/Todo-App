@@ -16,6 +16,8 @@ ActiveStorage.start()
 //= require jquery
 //= require jquery-ui/widgets/sortable
 //= require_tree .
+//= require jquery-ui/autocomplete
+//= require jquery-ui
 
 $(function () {
  

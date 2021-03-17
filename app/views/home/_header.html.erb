@@ -31,6 +31,19 @@
             <li>
             <h3 class="nav-item text-light align-right">Welcome <%=current_user.name%></h3>
            </li>
+          <li>
+          
+
+           <%= form_tag(search_task_path, :method => "get", class: 'navbar-form navbar-left') do %>  
+          <div class="input-group">  
+            <%= search_field_tag :search, params[:search], placeholder: "Search Task", class: "form-control" %>
+            </div>  
+          <div class="input-group-btn">  
+          <%= button_tag "search", :class => 'btn btn-primary fas fa-search',:name => nil%>  
+          </div>  
+        
+          <% end %>
+
           <%else %>
           <li class="nav-item">
           <%= link_to "Sign-Up", new_user_registration_path,class:"nav-link text-light" %>

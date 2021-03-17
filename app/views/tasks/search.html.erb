@@ -1,0 +1,20 @@
+<h3>Search Result</h3>  
+
+    <% @results.each do |result| %> 
+    	  <% if result.todo.blank? %>
+    	  no such task
+    	  <%else%>
+        task : <%= result.todo %><br> 
+        <% if result.completed %>
+        	completed!!
+        <%else%>
+        	Not Completed!!
+        <%end  %><br>
+        category : <%= result.category%> <br>
+        due date : <%= result.due_date.strftime("%B %e, %Y") %> <br>
+        <%= link_to 'Edit', edit_task_path(result) %> 
+        <hr>
+        <% end %>
+    <% end %>
+
+<%= link_to 'Back', tasks_path %>

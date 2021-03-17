@@ -5,6 +5,10 @@ class TasksController < ApplicationController
   def index
     @user= current_user
     @tasks = @user.tasks
+     respond_to do |format|
+    format.html
+    format.json { @task = @tasks.search(params[:term]) }
+  end
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -21,7 +25,21 @@ class TasksController < ApplicationController
   def edit
       
   end
-
+  def search
+    if params[:search].blank?  
+      redirect_to(tasks_path, alert: "Empty field!") and return  
+    else  
+       @user= current_user
+      @parameter = params[:search].downcase  
+      @results = @user.tasks.all.where("lower(todo) LIKE :search OR LOWER(category) LIKE :search", search: @parameter)  
+    end  
+  end
+    def self.search(term)
+      # @user= current_user
+      # @parameter = params[:search].downcase  
+      # @results = @user.tasks.all.where("lower(todo) LIKE :search", search: @parameter) 
+      where('LOWER(todo) LIKE :term OR LOWER(category) LIKE :term', term: "%#{term.downcase}%")
+    end
 
   # POST /tasks or /tasks.json
   def create

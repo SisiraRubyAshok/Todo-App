@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
+<div class="tasks-search">
+  <input type="text" id="tasks-search-txt" autofocus>
+  <div class="results" id="tasks-search-results"></div>
+</div>
+
+<script>
+  $(function() {
+    new app.Tasks;
+  });
+</script>
+
 
 <h1>Tasks</h1>
 
@@ -20,7 +31,7 @@
       <tr>
         <td><%= task.todo %></td>
         <td><%= task.category %></td>
-        <td><%= task.due_date %></td>
+        <td><%= task.due_date.strftime("%B %e, %Y") %></td>
         <td><%= task.priority %></td>
          <%if task.completed? %>
         <td>Completed</td>
