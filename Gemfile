@@ -26,7 +26,7 @@ gem 'jquery-ui-rails'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 2.0'
-
+gem 'rails-jquery-autocomplete'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
