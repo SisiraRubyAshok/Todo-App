@@ -21,9 +21,5 @@ ActiveStorage.start()
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
 
-$(function () {
- 
-  $('.remove-attachment').click(function () {
-    $(this).parent('.attachment').remove();
-  });
-});
+
+

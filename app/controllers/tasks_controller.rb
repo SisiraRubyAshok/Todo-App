@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-   autocomplete :task, :todo
 
   # GET /tasks or /tasks.json
   def index
@@ -27,20 +26,24 @@ class TasksController < ApplicationController
       
   end
   def search
-    if params[:search].blank?  
-      redirect_to(tasks_path, alert: "Empty field!") and return  
-    else  
+    if params[:search].present?  
+      params[:search].strip!
+      
        @user= current_user
       @parameter = params[:search].downcase  
       @results = @user.tasks.all.where("lower(todo) LIKE :search OR LOWER(category) LIKE :search", search: @parameter)  
+    else  
+      respond_to do |format|
+        format.html { redirect_to tasks_path , notice: "No search found." }
+        format.json { render :show, status: :created, location: @task }
+      end
+      # redirect_to(tasks_path, alert: "Empty field!") and return  
     end  
   end
-    def self.search(term)
-      # @user= current_user
-      # @parameter = params[:search].downcase  
-      # @results = @user.tasks.all.where("lower(todo) LIKE :search", search: @parameter) 
-      where('LOWER(todo) LIKE :term OR LOWER(category) LIKE :term', term: "%#{term.downcase}%")
-    end
+def autocomplete
+    render json: Autocomplete::Tasks.new(view_context)
+  end
+
 
   # POST /tasks or /tasks.json
   def create

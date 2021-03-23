@@ -32,15 +32,20 @@
             <h3 class="nav-item text-light">Welcome <%=current_user.name%></h3>
            </li>
           <li>
-        <div class="search align-right" , data-autocomplete="task/autocomplete_task_todo_tasks">
-           <%= form_tag(search_task_path, :method => "get", class: 'navbar-form navbar-left') do %>  
+        <!-- <div class="search align-right" , data-autocomplete="task/autocomplete_task_todo_tasks"> -->
+          <div class="search align-right" input id="basics">
+           <%= form_tag(search_task_path, :method => "get", class: 'navbar-form navbar-left ') do %>  
           <div class="input-group">  
-            <%= search_field_tag :search, params[:search], placeholder: "Search Task", class: "form-control" %>
-           
-          <div class="input-group-btn">  
+          <!--   <%= search_field_tag :search, params[:search], placeholder: "Search Task", class: "form-control autocomplete" %> -->
+
+            
+            <!-- data: { source: autocomplete_tasks_path } -->
+         <%= text_field_tag :search, params[:search], class: 'autocomplete', data: { source: autocomplete_tasks_path } %> 
+           <div class="input-group-btn">  
           <%= button_tag "search", :class => 'btn btn-primary fas fa-search',:name => nil%>  
-          </div>   </div>  </div>
-        </li>
+          </div>
+             </div>  </div>
+          </li>
           <% end %>
 
           <%else %>
