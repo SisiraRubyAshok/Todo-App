@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :force_json, only: :autocomplete
 
   # GET /tasks or /tasks.json
   def index
@@ -25,6 +26,13 @@ class TasksController < ApplicationController
   def edit
       
   end
+
+  def autocomplete
+    @user= current_user
+      @parameter = params[:search].downcase  
+      @results = @user.tasks.all
+  end
+
   def search
     if params[:search].present?  
       params[:search].strip!
@@ -32,6 +40,7 @@ class TasksController < ApplicationController
        @user= current_user
       @parameter = params[:search].downcase  
       @results = @user.tasks.all.where("lower(todo) LIKE :search OR LOWER(category) LIKE :search", search: @parameter)  
+      
     else  
       respond_to do |format|
         format.html { redirect_to tasks_path , notice: "No search found." }
@@ -39,9 +48,6 @@ class TasksController < ApplicationController
       end
       # redirect_to(tasks_path, alert: "Empty field!") and return  
     end  
-  end
-def autocomplete
-    render json: Autocomplete::Tasks.new(view_context)
   end
 
 
@@ -99,7 +105,9 @@ def autocomplete
       @task = Task.find(params[:id])
     end
 
-
+    def force_json
+      request.format = :json
+    end
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:todo, :category, :due_date, :priority, :user_id, {avatars: []}, :completed)

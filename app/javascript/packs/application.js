@@ -7,7 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
+import "packs/searchoption"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -16,10 +16,9 @@ ActiveStorage.start()
 //= require jquery
 //= require jquery-ui/widgets/sortable
 //= require_tree .
-//= require jquery-ui/autocomplete
 //= require jquery-ui
 //= require jquery-ui/widgets/autocomplete
-//= require autocomplete-rails
+//= require jquery.easy-autocomplete
 
 
 

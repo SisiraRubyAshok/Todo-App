@@ -14,22 +14,7 @@
  *= require_self
  *= require jquery-ui/datepicker
  *= require jquery-ui
+ *= require easy-autocomplete
+ *= require easy-autocomplete.themes
  */
 
-
-
-.product .description {
-  color: #b0bec5;
-  font-size: 80%;
-  font-weight: normal;
-}
-
-.ui-widget-content.ui-autocomplete{
-  max-width: 350px;
-}
-
-input {
-  height: 30px;
-  width: 300px;
-  padding-left: 15px;
-}
