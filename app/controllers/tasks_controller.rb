@@ -4,12 +4,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
+
     @user= current_user
-    @tasks = @user.tasks
-     respond_to do |format|
-    format.html
-    format.json { @task = @tasks.search(params[:term]) }
-  end
+    @tasks = @user.tasks.paginate(page: params[:page], per_page: 4).order(params[:sort])
+    # binding pry
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -22,9 +20,23 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def pending
+    @user= current_user
+    @tasks = @user.tasks
+  end
+
+  def expired
+     @user= current_user
+     @tasks = @user.tasks
+  end
+
   # GET /tasks/1/edit
   def edit
       
+  end
+  def completed
+    @user= current_user
+    @tasks = @user.tasks
   end
 
   def autocomplete

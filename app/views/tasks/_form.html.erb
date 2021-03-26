@@ -12,13 +12,13 @@
     </div>
   <% end %>
   
-  <div class="field form-group ">
+  <div class="field ">
       <%= form.label :Task_completed? %>
       <%= form.select :completed ,[false,true] %>
   </div>
 
   
-  <div class="field form-group ">
+  <div class="field ">
     <%= form.label :todo %>
     <%= form.text_field :todo %>
   </div>
@@ -38,7 +38,7 @@
 
   <div class="field form-group">
     <%= form.label :priority %>
-    <%= form.number_field :priority %>
+    <%= form.number_field :priority , min: 1%>
   </div>
 
   <div class="field form-group">

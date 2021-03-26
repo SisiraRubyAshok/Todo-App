@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :tasks
   get '/search' => 'tasks#search', :as => 'search_task'
+  get '/pending' => 'tasks#pending', :as => 'pending_task'
+  get '/completed' => 'tasks#completed', :as => 'completed_task'
   get '/autocomplete' => 'tasks#autocomplete', :as => 'autocomplete_task'
+  get '/expired' => 'tasks#expired', :as => 'expired_task'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

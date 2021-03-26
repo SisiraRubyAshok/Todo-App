@@ -1,0 +1,42 @@
+<table  class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th><%= link_to "Todo", :sort => "todo" %></th>
+      <th><%= link_to "Category", :sort => "category" %></th>
+      <th><%= link_to "Due date", :sort => "due_date" %></th>
+      <th><%= link_to "Priority", :sort => "priority" %></th>
+      <th><%= link_to "Status", :sort => "completed" %></th>
+      <!-- <th>User</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.todo %></td>
+        <td><%= task.category %></td>
+        <td><%= task.due_date.strftime("%B %e, %Y") %></td>
+        <td><%= task.priority %></td>
+         <%if task.completed? %>
+        <td>Completed</td>
+        <%elsif task.due_date< Date.today && task.completed==false %>
+        <td>Expired</td>
+        <%else%>
+        <td>Not Completed</td>
+        <%end%>
+        <!-- <td><%= task.user_id %></td> -->
+        <td><%= link_to 'Show', task %></td>
+        <!-- <% if task.user == current_user%> -->
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%else%>
+        <td></td>
+        <td></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
