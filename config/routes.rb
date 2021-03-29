@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get '/completed' => 'tasks#completed', :as => 'completed_task'
   get '/autocomplete' => 'tasks#autocomplete', :as => 'autocomplete_task'
   get '/expired' => 'tasks#expired', :as => 'expired_task'
+  get '/todaylist' => 'tasks#todaylist', :as => 'todaylist_task'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

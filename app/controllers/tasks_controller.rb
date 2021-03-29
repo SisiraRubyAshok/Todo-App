@@ -22,12 +22,14 @@ class TasksController < ApplicationController
 
   def pending
     @user= current_user
-    @tasks = @user.tasks
+    @tasks = @user.tasks.all.where(:completed => false)
+    @tasks=@tasks.all.where('due_date >= ?', Date.today)
   end
 
   def expired
      @user= current_user
-     @tasks = @user.tasks
+     @tasks = @user.tasks.all.where('due_date< ?', Date.today)
+     @tasks =@tasks.all.where(:completed => false)
   end
 
   # GET /tasks/1/edit
@@ -36,13 +38,17 @@ class TasksController < ApplicationController
   end
   def completed
     @user= current_user
-    @tasks = @user.tasks
+    @tasks = @user.tasks.all.where(:completed => true)
   end
 
   def autocomplete
     @user= current_user
       @parameter = params[:search].downcase  
       @results = @user.tasks.all
+  end
+  def todaylist
+    @user= current_user
+    @tasks = @user.tasks.all.where(:due_date => Date.today)
   end
 
   def search

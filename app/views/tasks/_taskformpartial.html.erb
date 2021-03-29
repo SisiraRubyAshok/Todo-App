@@ -26,10 +26,10 @@
         <td>Not Completed</td>
         <%end%>
         <!-- <td><%= task.user_id %></td> -->
-        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'View', task %></td>
         <!-- <% if task.user == current_user%> -->
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Completed ?', edit_task_path(task) %></td>
+        <td><%= link_to 'delete?', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%else%>
         <td></td>
         <td></td>

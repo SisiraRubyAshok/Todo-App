@@ -1,1 +1,7 @@
-<%= render 'expired', task: @task %> 
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Expired Task</h1>
+
+<%= render 'taskformpartial', task: @task %> 
+
+<%= link_to 'Back', tasks_path %>

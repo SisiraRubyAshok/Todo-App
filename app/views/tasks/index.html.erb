@@ -1,13 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
+<h1 align="center">All Tasks</h1>
 
  <%= render 'taskformpartial', task: @task %> 
 
-
-
-
-<div class="d-flex justify-content-center"><%= will_paginate @tasks %> </div>
-
-
- <%= render 'expired', task: @task %> 
+<h4 align="center"><%= will_paginate @tasks %> </h4>
