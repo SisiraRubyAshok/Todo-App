@@ -32,9 +32,16 @@ gem 'carrierwave', '~> 2.0'
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'mini_magick'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+#sidekiq
+gem "sidekiq"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'will_paginate' 
+
+#drapper
+gem 'draper'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
