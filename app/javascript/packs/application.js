@@ -19,7 +19,6 @@ ActiveStorage.start()
 //= require jquery-ui
 //= require jquery-ui/widgets/autocomplete
 //= require jquery.easy-autocomplete
-//= require signature_pad
 
 
 

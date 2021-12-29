@@ -70,21 +70,8 @@
     <%= form.label :user_id %>
     <%= form.number_field :user_id, id: :task_user_id, class:"form-control" , value:current_user.id%>
   </div>
+ 
 
- <div class="field form-group">
-  <!-- # <#%= form.text_field :signature, as: :hidden, class: 'signature_pad_input' %> -->
-     <input name="signature" type="hidden" value="signature">
-  <div class="signature_pad text-center">
-    <div class="signature_pad_body">
-      <canvas></canvas>
-    </div>
-    <div class="signature_pad_footer">
-      <div class="text-muted">Sign above</div>
-     <!--  <button type="button" class="btn btn-default signature_pad_clear">Clear</button>
-      <#%= form.button :submit, 'Save', class: 'btn btn-success signature_pad_save'  %>
-    </div> -->
-  </div>
-</div>
 
   <div class="actions">
     <%= form.submit %>

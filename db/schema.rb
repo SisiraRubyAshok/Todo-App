@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_111359) do
+ActiveRecord::Schema.define(version: 2021_03_19_023505) do
 
   create_table "search_suggestions", force: :cascade do |t|
     t.string "term"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2021_10_20_111359) do
     t.string "avatars"
     t.string "avatar"
     t.boolean "completed", default: false
-    t.binary "signature"
-    t.datetime "signed_on"
   end
 
   create_table "users", force: :cascade do |t|
